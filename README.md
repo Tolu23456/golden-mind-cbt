@@ -2,6 +2,8 @@
 
 A friendly website where students learn computer skills and practise computer-based tests (CBT).
 
+**Live site:** https://tolu23456.github.io/golden-mind-cbt/
+
 ## Run it
 
 ```
@@ -47,6 +49,10 @@ Register a new file by adding one line in `js/data.js` (`topics`). Run `node scr
 
 Add a `.md` file in `lessons/` and one line in `js/data.js` (`lessons`).
 Lesson markdown supports headings, **bold**, *italic*, `code`, lists, `> tips`, and `[kbd:Ctrl]` for keyboard keys.
+
+## Hosting
+
+The site is published with GitHub Pages from the `main` branch. The `.nojekyll` file is required: it stops GitHub from processing the lesson and question markdown files, so the browser can fetch them as raw text.
 
 ## Folder map
 
