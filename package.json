@@ -1,0 +1,11 @@
+{
+  "name": "golden-mind-cbt",
+  "version": "1.0.0",
+  "description": "Computer skills and CBT practice for students: mouse, keyboard, typing, lessons and quizzes.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node scripts/check-questions.js"
+  },
+  "license": "MIT"
+}

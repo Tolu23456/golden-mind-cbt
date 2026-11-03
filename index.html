@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home — Golden Mind CBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<main>
+  <section class="shell hero">
+    <div>
+      <h1>Learn the computer. <em>Pass the CBT.</em></h1>
+      <p class="lede">Practise the mouse, learn the keyboard, build typing speed, and sit real computer-based test practice — step by step, at your own pace.</p>
+      <p id="greeting" class="lede" hidden></p>
+      <form class="name-row" id="nameForm">
+        <label class="sr-only" for="nameInput">Your first name</label>
+        <input class="text-input" id="nameInput" placeholder="Your first name" maxlength="24" autocomplete="given-name" />
+        <button class="btn btn-primary" type="submit">Start learning</button>
+      </form>
+    </div>
+    <div class="cursor-demo" aria-hidden="true">
+      <div class="typed">Hello, I can type!</div>
+      <div class="fake-btn">Click me</div>
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M3 2l7 19 3-8 8-3z" fill="#fff" stroke="#1d2b4f" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <h2>Your journey</h2>
+    <div class="journey" id="journey"></div>
+    <div class="meter" style="margin-top:1rem" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" id="overall"><span></span></div>
+  </section>
+
+  <section class="shell section">
+    <h2>Start here</h2>
+    <div class="grid">
+      <a class="card" href="learn.html"><span class="emoji">📚</span><h3>Lessons</h3><p>Short readable lessons on computers, keyboards and safety.</p></a>
+      <a class="card" href="mouse.html"><span class="emoji">🖱️</span><h3>Mouse Lab</h3><p>Move, click, double-click, right-click, drag, scroll and select.</p></a>
+      <a class="card" href="keyboard.html"><span class="emoji">⌨️</span><h3>Keyboard Explorer</h3><p>Press any key to meet it, then try the shortcut challenge.</p></a>
+      <a class="card" href="typing.html"><span class="emoji">👐</span><h3>Typing Tutor</h3><p>Finger-by-finger lessons with speed and accuracy scores.</p></a>
+      <a class="card" href="quiz.html"><span class="emoji">🎯</span><h3>Practice Test</h3><p>Topic quizzes or a timed exam with a question navigator.</p></a>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <h2>Quiz topics</h2>
+    <div class="grid" id="topics"></div>
+  </section>
+</main>
+<script src="js/markdown.js"></script><script src="js/data.js"></script><script src="js/app.js"></script>
+<script src="js/home.js"></script>
+</body></html>

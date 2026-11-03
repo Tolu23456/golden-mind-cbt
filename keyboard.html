@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keyboard Explorer — Golden Mind CBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<main class="shell section">
+  <h1 style="font-size:2.4rem">Keyboard Explorer</h1>
+  <p>Press any key on your real keyboard. It will light up below and we'll tell you what it does.</p>
+  <div id="kb"></div>
+  <div class="grid" style="margin-top:1.2rem;grid-template-columns:1fr 2fr">
+    <div class="big-key" id="bigKey" aria-live="polite">Press a key<small>Try Enter, Shift, Space…</small></div>
+    <div class="card">
+      <h3>Colour guide</h3>
+      <p>Each colour is a finger. Pinkies are rose, ring fingers gold, middle fingers green, index fingers blue, thumbs purple. Keep your fingers on the <strong>home row</strong>: <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd> and <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> <kbd>;</kbd>.</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:2.5rem">Shortcut challenge</h2>
+  <div class="card challenge" id="challenge">
+    <p class="combo" id="chCount"></p>
+    <p class="ask" id="chAsk">Ten quick questions. Press the keys that do the job.</p>
+    <p class="combo" id="chCombo" role="status"></p>
+    <button class="btn btn-primary" id="chStart" type="button">Start challenge</button>
+  </div>
+</main>
+<script src="js/markdown.js"></script><script src="js/data.js"></script><script src="js/app.js"></script>
+<script src="js/keyboard.js"></script>
+</body></html>
