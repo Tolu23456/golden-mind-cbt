@@ -106,7 +106,12 @@ function finish(timeUp) {
   const score = qs.filter((q, k) => answers[k] === q.correctIndex).length;
   const pct = Math.round((score / qs.length) * 100);
   const byTopic = {};
-  qs.forEach((q, k) => { const t = (byTopic[q.topic] ||= { c: 0, n: 0 }); t.n++; if (answers[k] === q.correctIndex) t.c++; });
+  qs.forEach((q, k) => {
+    if (!byTopic[q.topic]) byTopic[q.topic] = { c: 0, n: 0 };
+    const t = byTopic[q.topic];
+    t.n++;
+    if (answers[k] === q.correctIndex) t.c++;
+  });
   GM.update((p) => Object.entries(byTopic).forEach(([id, t]) => {
     const pc = Math.round((t.c / t.n) * 100), o = p.quizzes[id];
     p.quizzes[id] = { best: Math.max(pc, o ? o.best : 0), attempts: (o ? o.attempts : 0) + 1 };
