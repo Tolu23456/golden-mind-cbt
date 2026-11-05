@@ -6,7 +6,7 @@ let idx = Math.max(0, L.findIndex((l) => l.id === location.hash.slice(1)));
 function nav() {
   const p = GM.load();
   GM.$("#lessonNav").innerHTML = L.map((l, i) =>
-    `<button type="button" data-i="${i}" ${i === idx ? 'aria-current="true"' : ""}>${l.emoji} ${l.title}${p.lessons[l.id] ? '<span class="tick" aria-label="done">✔</span>' : ""}</button>`).join("");
+    `<button type="button" data-i="${i}" ${i === idx ? 'aria-current="true"' : ""}>${GMI(l.icon)} ${l.title}${p.lessons[l.id] ? '<span class="tick" aria-label="done">' + GMI("check") + "</span>" : ""}</button>`).join("");
 }
 async function show(i) {
   idx = i;
@@ -20,11 +20,11 @@ async function show(i) {
   GM.$("#nextBtn").disabled = i === L.length - 1;
   GM.$("#quizLink").href = "quiz.html?topic=" + l.quiz;
   const done = !!GM.load().lessons[l.id];
-  GM.$("#doneBtn").textContent = done ? "Done ✔" : "Mark as done";
+  GM.$("#doneBtn").textContent = done ? "Done" : "Mark as done";
   window.scrollTo({ top: 0 });
 }
 GM.$("#lessonNav").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) show(+b.dataset.i); });
 GM.$("#prevBtn").onclick = () => show(idx - 1);
 GM.$("#nextBtn").onclick = () => show(idx + 1);
-GM.$("#doneBtn").onclick = () => { GM.update((p) => { p.lessons[L[idx].id] = true; }); GM.$("#doneBtn").textContent = "Done ✔"; nav(); };
+GM.$("#doneBtn").onclick = () => { GM.update((p) => { p.lessons[L[idx].id] = true; }); GM.$("#doneBtn").textContent = "Done"; nav(); };
 show(idx);

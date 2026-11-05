@@ -29,6 +29,7 @@ const GM = (() => {
     footer.className = "site-footer";
     footer.innerHTML = `<div class="shell"><p><strong>Golden Mind CBT</strong> — computer skills for students: mouse, keyboard, typing and exam practice.</p><p>Your progress is saved on this device only.</p></div>`;
     document.body.append(footer);
+    if (window.GMI) $$("[data-icon]").forEach((el) => { el.innerHTML = GMI(el.dataset.icon); });
   }
 
   const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };

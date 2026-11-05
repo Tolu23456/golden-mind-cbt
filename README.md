@@ -20,7 +20,7 @@ Opening `index.html` by double-clicking will NOT work, because the lessons and q
 |---|---|
 | `index.html` | Enter their name, see progress, jump to topics |
 | `learn.html` | Read 8 short lessons (from `lessons/*.md`) |
-| `mouse.html` | Mouse Lab: move, click, double-click, right-click, drag and drop, scroll, select text |
+| `mouse.html` | Mouse Lab: 37 levels covering aiming, clicking, dragging, scrolling, selecting and interface controls |
 | `keyboard.html` | Keyboard Explorer + 10-question shortcut challenge |
 | `typing.html` | 12 typing lessons with WPM, accuracy, stars and an on-screen keyboard |
 | `quiz.html` | Practice mode (tips) or timed Exam mode (navigator, flags, auto-submit) |
@@ -59,7 +59,7 @@ The site is published with GitHub Pages from the `main` branch. The `.nojekyll` 
 ```
 index.html learn.html mouse.html keyboard.html typing.html quiz.html
 css/styles.css
-js/   app.js  data.js  markdown.js  home.js learn.js mouse.js keyboard.js typing.js quiz.js
+js/   app.js  icons.js  data.js  markdown.js  home.js learn.js mouse.js keyboard.js typing.js quiz.js
 lessons/*.md      questions/*.md
 server.js  package.json  scripts/check-questions.js
 ```

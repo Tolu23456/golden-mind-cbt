@@ -9,7 +9,7 @@ function render() {
   const mouseDone = Object.keys(p.mouse).length;
   const typingDone = Object.values(p.typing).filter((t) => t.stars > 0).length;
   const quizzesDone = D.topics.filter((t) => p.quizzes[t.id]).length;
-  const MOUSE_TOTAL = 7, TYPING_TOTAL = 12;
+  const MOUSE_TOTAL = D.mouseLevels.length, TYPING_TOTAL = 12;
   const items = [
     ["Lessons read", lessonsDone, D.lessons.length],
     ["Mouse levels", mouseDone, MOUSE_TOTAL],
@@ -25,7 +25,7 @@ function render() {
   o.firstElementChild.style.width = pct + "%";
   GM.$("#topics").innerHTML = D.topics.map((t) => {
     const q = p.quizzes[t.id];
-    return `<a class="card" href="quiz.html?topic=${t.id}"><span class="emoji">${t.emoji}</span><h3>${t.title}</h3><p>${t.blurb}</p>${q ? `<span class="pill done">Best ${q.best}%</span>` : '<span class="pill">Not tried</span>'}</a>`;
+    return `<a class="card" href="quiz.html?topic=${t.id}"><span class="card-icon">${GMI(t.icon)}</span><h3>${t.title}</h3><p>${t.blurb}</p>${q ? `<span class="pill done">Best ${q.best}%</span>` : '<span class="pill">Not tried</span>'}</a>`;
   }).join("");
 }
 GM.$("#nameForm").addEventListener("submit", (e) => {

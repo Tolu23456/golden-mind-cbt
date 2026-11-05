@@ -86,8 +86,8 @@ document.addEventListener("keydown", (e) => {
   e.preventDefault();
   const [, test, label] = deck[pos];
   locked = true;
-  if (test(e)) { score++; cm.textContent = "✔ Correct! " + label; GM.flash(kb, e.key.toLowerCase(), "hit"); }
-  else { cm.textContent = "✘ Not quite. The answer is " + label; GM.flash(kb, e.key.toLowerCase(), "miss"); }
+  if (test(e)) { score++; cm.textContent = "Correct! " + label; GM.flash(kb, e.key.toLowerCase(), "hit"); }
+  else { cm.textContent = "Not quite. The answer is " + label; GM.flash(kb, e.key.toLowerCase(), "miss"); }
   pos++;
   setTimeout(next, 1100);
 });

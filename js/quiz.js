@@ -8,8 +8,8 @@ let qs = [], answers = [], flags = [], i = 0, mode = "practice", timer = 0, left
 /* ---------- setup ---------- */
 const wanted = new URLSearchParams(location.search).get("topic");
 const bests = GM.load().quizzes;
-$("#topicList").innerHTML = T.map((t) => `<label class="card topic-pick"><input type="checkbox" value="${t.id}" ${t.id === wanted ? "checked" : ""}/><span><strong>${t.emoji} ${t.title}</strong><br /><small>${t.blurb}</small>${bests[t.id] ? `<br /><span class="pill done">Best ${bests[t.id].best}%</span>` : ""}</span></label>`).join("") +
-  `<label class="card topic-pick"><input type="checkbox" id="allBox"/><span><strong>🎲 Everything</strong><br /><small>Mix all topics together.</small></span></label>`;
+$("#topicList").innerHTML = T.map((t) => `<label class="card topic-pick"><input type="checkbox" value="${t.id}" ${t.id === wanted ? "checked" : ""}/><span><strong>${GMI(t.icon)} ${t.title}</strong><br /><small>${t.blurb}</small>${bests[t.id] ? `<br /><span class="pill done">Best ${bests[t.id].best}%</span>` : ""}</span></label>`).join("") +
+  `<label class="card topic-pick"><input type="checkbox" id="allBox"/><span><strong>${GMI("dice")} Everything</strong><br /><small>Mix all topics together.</small></span></label>`;
 $("#allBox").addEventListener("change", (e) => GM.$$("#topicList input[value]").forEach((c) => (c.checked = e.target.checked)));
 
 $("#startBtn").onclick = async () => {
@@ -69,7 +69,7 @@ function draw() {
   }).join("");
   const fb = $("#fb");
   fb.classList.toggle("hidden", !locked);
-  if (locked) fb.innerHTML = `<strong>${answers[i] === q.correctIndex ? "✔ Correct!" : "✘ Not quite."}</strong> ${GMMD.esc(q.tip || "")}`;
+  if (locked) fb.innerHTML = `<strong>${answers[i] === q.correctIndex ? GMI("check") + " Correct!" : GMI("cross") + " Not quite."}</strong> ${GMMD.esc(q.tip || "")}`;
   $("#prev").disabled = i === 0;
   $("#next").textContent = i === qs.length - 1 ? (mode === "practice" ? "Finish" : "Last question") : "Next";
   $("#next").disabled = mode === "exam" && i === qs.length - 1;
@@ -118,13 +118,13 @@ function finish(timeUp) {
   }));
   const name = GM.load().name;
   $("#resScore").textContent = `${score}/${qs.length}`;
-  $("#resEmoji").textContent = pct >= 80 ? "🏆" : pct >= 50 ? "👏" : "💪";
+  $("#resEmoji").innerHTML = pct >= 80 ? GMI("trophy") : pct >= 50 ? GMI("thumbsUp") : GMI("muscle");
   $("#resMsg").textContent = (pct >= 80 ? "Excellent work" : pct >= 50 ? "Good effort" : "Keep practising") + (name ? ", " + name + "!" : "!");
   $("#resDetail").textContent = `${pct}% correct in ${titles}.` + (timeUp ? " Time ran out, so the test was submitted for you." : "");
   $("#review").innerHTML = qs.map((q, k) => {
     const ok = answers[k] === q.correctIndex;
     return `<div class="review-item ${ok ? "" : "bad"}"><p class="q-text">${k + 1}. ${GMMD.esc(q.question)}</p>
-      <p>${ok ? "✔" : "✘"} Your answer: <strong>${answers[k] >= 0 ? GMMD.esc(q.options[answers[k]]) : "No answer"}</strong>${ok ? "" : `<br />Correct answer: <strong>${GMMD.esc(q.options[q.correctIndex])}</strong>`}</p>
+      <p>${ok ? GMI("check") : GMI("cross")} Your answer: <strong>${answers[k] >= 0 ? GMMD.esc(q.options[answers[k]]) : "No answer"}</strong>${ok ? "" : `<br />Correct answer: <strong>${GMMD.esc(q.options[q.correctIndex])}</strong>`}</p>
       ${q.tip ? `<p><em>${GMMD.esc(q.tip)}</em></p>` : ""}</div>`;
   }).join("");
   show("result"); window.scrollTo({ top: 0 });
