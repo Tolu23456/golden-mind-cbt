@@ -8,8 +8,14 @@ let qs = [], answers = [], flags = [], i = 0, mode = "practice", timer = 0, left
 /* ---------- setup ---------- */
 const wanted = new URLSearchParams(location.search).get("topic");
 const bests = GM.load().quizzes;
-$("#topicList").innerHTML = T.map((t) => `<label class="card topic-pick"><input type="checkbox" value="${t.id}" ${t.id === wanted ? "checked" : ""}/><span><strong>${GMI(t.icon)} ${t.title}</strong><br /><small>${t.blurb}</small>${bests[t.id] ? `<br /><span class="pill done">Best ${bests[t.id].best}%</span>` : ""}</span></label>`).join("") +
-  `<label class="card topic-pick"><input type="checkbox" id="allBox"/><span><strong>${GMI("dice")} Everything</strong><br /><small>Mix all topics together.</small></span></label>`;
+const groups = [];
+T.forEach((t) => { if (!groups.includes(t.group)) groups.push(t.group); });
+$("#topicList").innerHTML = groups.map((g) =>
+  `<div class="topic-group"><h3>${g}</h3><div class="grid">` +
+  T.filter((t) => t.group === g).map((t) => `<label class="card topic-pick"><input type="checkbox" value="${t.id}" ${t.id === wanted ? "checked" : ""}/><span><strong>${GMI(t.icon)} ${t.title}</strong><br /><small>${t.blurb}</small>${bests[t.id] ? `<br /><span class="pill done">Best ${bests[t.id].best}%</span>` : ""}</span></label>`).join("") +
+  `</div></div>`
+).join("") +
+  `<div class="topic-group"><h3>Mixed</h3><div class="grid"><label class="card topic-pick"><input type="checkbox" id="allBox"/><span><strong>${GMI("dice")} Everything</strong><br /><small>Mix all topics together.</small></span></label></div></div>`;
 $("#allBox").addEventListener("change", (e) => GM.$$("#topicList input[value]").forEach((c) => (c.checked = e.target.checked)));
 
 $("#startBtn").onclick = async () => {

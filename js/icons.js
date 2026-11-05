@@ -59,6 +59,30 @@
     play: '<path d="M8 5l11 7-11 7z"/>',
     home: '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
 
+    /* Programming and digital life */
+    code: '<path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/>',
+    terminal: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/>',
+    rocket: '<path d="M12 3c3 1 4 5 4 8l-4 4-4-4c0-3 1-7 4-8z"/><path d="M8 11l-3 3 3 1M16 11l3 3-3 1M9 17l3 3 3-3"/>',
+    bug: '<rect x="8" y="7" width="8" height="11" rx="4"/><path d="M8 11H5M8 15H5M16 11h3M16 15h3M9 7L7 5M15 7l2-2M12 18v3"/>',
+    puzzle: '<path d="M9 4a2 2 0 0 1 4 0v1h3v4h1a2 2 0 0 1 0 4h-1v4h-4v-1a2 2 0 0 0-4 0v1H4v-4h1a2 2 0 0 0 0-4H4V5h5z"/>',
+    sparkles: '<path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6z"/><path d="M18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8z"/>',
+    robot: '<rect x="4" y="8" width="16" height="11" rx="3"/><circle cx="9" cy="13" r="1"/><circle cx="15" cy="13" r="1"/><path d="M12 4v4M9 19v2M15 19v2"/>',
+    cloud: '<path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.5-1.5A3.5 3.5 0 0 1 18 18z"/>',
+    presentation: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 21l4-3 4 3"/>',
+    wallet: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 14h2"/>',
+    camera: '<rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 7l1.5-2h5L16 7"/>',
+    network: '<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5L6.5 17M12 11.5l5.5 5.5"/>',
+    database: '<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',
+    brain: '<path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-1 5 3 3 0 0 0 2 5 3 3 0 0 0 5 1V5a3 3 0 0 0-3-1z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 1 5 3 3 0 0 1-2 5 3 3 0 0 1-5 1V5a3 3 0 0 1 3-1z"/>',
+    branch: '<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10M18 9v2a4 4 0 0 1-4 4H8"/>',
+    key: '<circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M16 16l2-2M19 19l2-2"/>',
+    wifi: '<path d="M3 9a15 15 0 0 1 18 0M6 12.5a10 10 0 0 1 12 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="20" r="1"/>',
+    chat: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
+    graduation: '<path d="M2 9l10-4 10 4-10 4z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/>',
+    layers: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/>',
+    route: '<circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h6a4 4 0 0 1 0 8H9a4 4 0 0 0 0 8h8"/>',
+    save: '<path d="M5 3h11l3 3v15H5z"/><path d="M8 3v6h8V3M8 21v-7h8v7"/>',
+
     /* Shapes */
     circle: '<circle cx="12" cy="12" r="8"/>',
     square: '<rect x="4" y="4" width="16" height="16" rx="2"/>',
@@ -75,7 +99,13 @@
     resize: "resize handle", eye: "eye", copy: "copy", paste: "paste",
     trash: "delete", pencil: "rename", circle: "circle", square: "square",
     triangle: "triangle", star: "star", gift: "gift", check: "tick",
-    radio: "radio button", checkbox: "checkbox", palette: "colour"
+    radio: "radio button", checkbox: "checkbox", palette: "colour",
+    code: "code", terminal: "terminal", rocket: "rocket", bug: "bug",
+    puzzle: "puzzle", sparkles: "sparkles", robot: "robot", cloud: "cloud",
+    presentation: "presentation", wallet: "wallet", camera: "camera",
+    network: "network", database: "database", brain: "brain",
+    branch: "branch", key: "key", wifi: "wifi", chat: "chat",
+    graduation: "graduation cap", layers: "layers", route: "route", save: "save"
   };
 
   window.GMI_NAMES = NAMES;

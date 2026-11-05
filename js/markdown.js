@@ -13,7 +13,7 @@
     return s;
   }
 
-  const isBlock = (l) => /^(#{1,4}\s|>\s?|[-*]\s+|\d+\.\s+|---+$)/.test(l);
+  const isBlock = (l) => /^(#{1,4}\s|>\s?|[-*]\s+|\d+\.\s+|```|---+$)/.test(l);
 
   function mdToHtml(md) {
     const lines = md.replace(/\r/g, "").split("\n");
@@ -24,6 +24,15 @@
       if (!l.trim()) { i++; continue; }
       let m;
       if ((m = l.match(/^(#{1,4})\s+(.*)/))) { out.push(`<h${m[1].length}>${inline(m[2])}</h${m[1].length}>`); i++; continue; }
+      if (l.startsWith("```")) {
+        const lang = l.slice(3).trim();
+        const b = [];
+        i++;
+        while (i < lines.length && !lines[i].startsWith("```")) { b.push(lines[i]); i++; }
+        i++;
+        out.push(`<pre class="code-block"><code${lang ? ` data-lang="${esc(lang)}"` : ""}>${esc(b.join("\n"))}</code></pre>`);
+        continue;
+      }
       if (/^---+$/.test(l.trim())) { out.push("<hr>"); i++; continue; }
       if (/^>\s?/.test(l)) {
         const b = [];

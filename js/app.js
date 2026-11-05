@@ -5,7 +5,7 @@ const GM = (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-  const blank = () => ({ name: "", lessons: {}, quizzes: {}, typing: {}, mouse: {}, shortcuts: { best: 0 } });
+  const blank = () => ({ name: "", lessons: {}, quizzes: {}, typing: {}, mouse: {}, lab: {}, shortcuts: { best: 0 } });
   function load() {
     try { return Object.assign(blank(), JSON.parse(localStorage.getItem(KEY)) || {}); }
     catch (e) { return blank(); }
@@ -14,8 +14,9 @@ const GM = (() => {
   function update(fn) { const p = load(); fn(p); save(p); return p; }
 
   const NAV = [
-    ["index.html", "Home"], ["learn.html", "Learn"], ["mouse.html", "Mouse Lab"],
-    ["keyboard.html", "Keyboard"], ["typing.html", "Typing"], ["quiz.html", "Practice Test"]
+    ["index.html", "Home"], ["courses.html", "Courses"], ["code.html", "Programming"],
+    ["mouse.html", "Mouse Lab"], ["keyboard.html", "Keyboard"], ["typing.html", "Typing"],
+    ["quiz.html", "Practice Test"]
   ];
 
   function chrome(page) {
@@ -27,7 +28,7 @@ const GM = (() => {
     document.body.prepend(header);
     const footer = document.createElement("footer");
     footer.className = "site-footer";
-    footer.innerHTML = `<div class="shell"><p><strong>Golden Mind CBT</strong> — computer skills for students: mouse, keyboard, typing and exam practice.</p><p>Your progress is saved on this device only.</p></div>`;
+    footer.innerHTML = `<div class="shell"><p><strong>Golden Mind CBT</strong> — computer skills, programming paths, typing practice and exam preparation for students.</p><p>Your progress is saved on this device only.</p></div>`;
     document.body.append(footer);
     if (window.GMI) $$("[data-icon]").forEach((el) => { el.innerHTML = GMI(el.dataset.icon); });
   }
@@ -66,5 +67,29 @@ const GM = (() => {
   }
 
   const stars = (n) => "★".repeat(n) + "☆".repeat(3 - n);
-  return { $, $$, load, save, update, chrome, shuffle, rand, text, buildKeyboard, keyEls, flash, keyFor, stars, FINGER_OF };
+
+  /* ---- course helpers (shared by the catalogue, course and lesson pages) ---- */
+  const lessonsOf = (course) => {
+    const ids = [];
+    (course && course.units ? course.units : []).forEach((u) => (u.lessons || []).forEach((id) => {
+      if (!ids.includes(id)) ids.push(id);
+    }));
+    return ids;
+  };
+  const courseProgress = (course, p) => {
+    const ids = lessonsOf(course);
+    const done = ids.filter((id) => p.lessons[id]).length;
+    return { done, total: ids.length, pct: ids.length ? Math.round((done / ids.length) * 100) : 0 };
+  };
+  const xp = (p) => {
+    const D = window.GM_DATA || { lessons: [], mouseLevels: [], typingLessons: [] };
+    return D.lessons.filter((l) => p.lessons[l.id]).length * 10 +
+      Object.keys(p.quizzes || {}).length * 20 +
+      Object.keys(p.mouse || {}).length * 5 +
+      Object.values(p.typing || {}).reduce((s, t) => s + (t.stars || 0) * 5, 0) +
+      Object.keys(p.lab || {}).length * 15;
+  };
+  const levelOf = (score) => Math.floor(score / 100) + 1;
+
+  return { $, $$, load, save, update, chrome, shuffle, rand, text, buildKeyboard, keyEls, flash, keyFor, stars, FINGER_OF, lessonsOf, courseProgress, xp, levelOf };
 })();

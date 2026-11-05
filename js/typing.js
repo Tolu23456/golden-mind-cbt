@@ -1,29 +1,23 @@
 "use strict";
 GM.chrome("typing.html");
-const LESSONS = [
-  ["Home row: left", "Index and middle fingers rest on F and D.", "asdf asdf fads sad fad dad add fas sass ads dads fads"],
-  ["Home row: right", "Right hand rests on J K L ;", "jkl; jkl; lad ask salad flask all fall lakes jaffa"],
-  ["Home row: both hands", "Use both hands together.", "a sad lad asks dad; dad has a flask; all fall as lads ask"],
-  ["Top row: E R U I", "Reach up, then come straight back to the home row.", "ride fire sure tire fuse rule rise sure ride true user"],
-  ["Top row: Q W T Y O P", "The top row has the most letters.", "water power quiet write pretty today toward wrote tower"],
-  ["Bottom row", "Reach down with Z X C V B N M.", "zebra box cave vine bank name mix cabin move zoom nine"],
-  ["Common words", "The words you will type most often.", "the and for you are with this that have from they will"],
-  ["Capital letters", "Hold Shift with the opposite hand.", "Lagos Abuja Kano Ibadan Enugu Port Harcourt Nigeria Africa"],
-  ["Numbers", "Use the number row. Keep your eyes on the screen.", "10 20 30 45 67 89 100 250 1960 2024 2030 12345 67890"],
-  ["Punctuation", "Full stops, commas and question marks.", "Yes, I can. Can you? We read, we write, we learn. Well done!"],
-  ["Computer words", "Words you will meet in every computer class.", "mouse keyboard screen folder file save print click type cursor"],
-  ["Short story", "Put it all together.", "My name is Ada. I go to school in Lagos. Today I learned to type. It was fun, and I want to get faster."]
-];
+const LESSONS = GM_DATA.typingLessons;
 const textEl = GM.$("#text"), kb = GM.$("#kb");
 GM.buildKeyboard(kb);
 let cur = 0, chars = [], pos = 0, errors = 0, startAt = 0, timer = 0, finished = false;
 
 function drawList() {
   const p = GM.load();
-  GM.$("#list").innerHTML = LESSONS.map((l, i) => {
+  let group = "";
+  const out = [];
+  LESSONS.forEach((l, i) => {
+    if (l.group !== group) {
+      group = l.group;
+      out.push(`<span class="nav-group">${group}</span>`);
+    }
     const t = p.typing[i];
-    return `<button type="button" data-i="${i}" ${i === cur ? 'aria-current="true"' : ""}>${i + 1}. ${l[0]}<span class="stars" aria-label="${t ? t.stars : 0} stars">${GM.stars(t ? t.stars : 0)}</span></button>`;
-  }).join("");
+    out.push(`<button type="button" data-i="${i}" ${i === cur ? 'aria-current="true"' : ""}>${i + 1}. ${l.title}<span class="stars" aria-label="${t ? t.stars : 0} stars">${GM.stars(t ? t.stars : 0)}</span></button>`);
+  });
+  GM.$("#list").innerHTML = out.join("");
 }
 function render() {
   textEl.innerHTML = chars.map((c, i) => `<span class="${i < pos ? "ok" : i === pos ? "cur" : ""}">${c === " " ? "&nbsp;" : GMMD.esc(c)}</span>`).join("");
@@ -45,9 +39,9 @@ function stats() {
 }
 function start(i) {
   cur = i; clearInterval(timer);
-  chars = [...LESSONS[i][2]]; pos = 0; errors = 0; startAt = 0; finished = false;
-  GM.$("#tTitle").textContent = `${i + 1}. ${LESSONS[i][0]}`;
-  GM.$("#tHelp").textContent = LESSONS[i][1];
+  chars = [...LESSONS[i].text]; pos = 0; errors = 0; startAt = 0; finished = false;
+  GM.$("#tTitle").textContent = `${i + 1}. ${LESSONS[i].title}`;
+  GM.$("#tHelp").textContent = LESSONS[i].help;
   GM.$("#tMsg").textContent = "Press the glowing key to begin."; GM.$("#nextT").hidden = true;
   stats(); drawList(); render(); mark(); textEl.focus();
 }

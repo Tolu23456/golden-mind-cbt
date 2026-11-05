@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Lab — Golden Mind CBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<main class="shell lab-page">
+  <div class="lab-head">
+    <div>
+      <p class="crumbs"><a href="code.html">Programming</a> / Code Lab</p>
+      <h1>Code Lab</h1>
+    </div>
+    <div class="lab-actions">
+      <a class="btn btn-secondary" href="courses.html">Courses</a>
+      <a class="btn btn-secondary" href="quiz.html?topic=web-basics">Web checkpoint</a>
+    </div>
+  </div>
+
+  <div class="lab-layout">
+    <nav class="lab-side" id="challengeNav" aria-label="Code challenges"><p class="muted">Loading…</p></nav>
+    <div class="lab-main">
+      <section class="lab-intro">
+        <span class="level-pill" id="challengeLevel">Starter</span>
+        <h2 id="challengeTitle">Loading challenge…</h2>
+        <p id="challengeBlurb"></p>
+        <div class="test-list" id="testList"></div>
+      </section>
+
+      <div class="editor-wrap">
+        <div class="editor-tabs" role="tablist" aria-label="Code files">
+          <button type="button" role="tab" data-tab="html" aria-selected="true">HTML</button>
+          <button type="button" role="tab" data-tab="css" aria-selected="false">CSS</button>
+          <button type="button" role="tab" data-tab="js" aria-selected="false">JavaScript</button>
+        </div>
+        <div class="editor-pane">
+          <label class="sr-only" for="editor">Code editor</label>
+          <textarea id="editor" spellcheck="false" autocapitalize="off" autocorrect="off"></textarea>
+        </div>
+      </div>
+
+      <div class="lab-actions">
+        <button class="btn btn-primary" id="runBtn" type="button">Run and check</button>
+        <button class="btn btn-secondary" id="resetBtn" type="button">Reset code</button>
+        <button class="btn btn-secondary" id="nextBtn" type="button">Next challenge</button>
+      </div>
+      <p class="lab-msg" id="labMsg" role="status" aria-live="polite"></p>
+
+      <section class="preview-card" aria-label="Live preview">
+        <div class="preview-head"><span>Preview</span><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></div>
+        <iframe class="preview-frame" id="preview" title="Preview of your code" sandbox="allow-scripts allow-modals allow-forms"></iframe>
+      </section>
+    </div>
+  </div>
+  <noscript><p>This page needs JavaScript to run the code editor. Please turn it on and refresh.</p></noscript>
+</main>
+<script src="js/markdown.js"></script><script src="js/icons.js"></script><script src="js/data.js"></script><script src="js/app.js"></script>
+<script src="js/lab.js"></script>
+</body></html>

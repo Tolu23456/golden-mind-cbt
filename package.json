@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "check": "node scripts/check-questions.js"
+    "check": "node scripts/check-questions.js && node scripts/check-content.js"
   },
   "license": "MIT"
 }

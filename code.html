@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming — Golden Mind CBT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<main>
+  <section class="shell code-hero">
+    <div>
+      <span class="level-pill programming">Learn to build</span>
+      <h1>Programming paths</h1>
+      <p class="lede">Short lessons, real code and instant feedback. Start with web pages, learn Python, or go deeper into how computers think.</p>
+      <div class="hero-stats" id="heroStats"></div>
+    </div>
+    <div class="code-panel" aria-hidden="true">
+      <div class="bar"><span></span><span></span><span></span></div>
+      <div><span class="cm">// your first program</span></div>
+      <div><span class="kw">const</span> name = <span class="str">"Ada"</span>;</div>
+      <div><span class="kw">function</span> greet(who) {</div>
+      <div>&nbsp;&nbsp;<span class="kw">return</span> <span class="str">`Hello, ${who}!`</span>;</div>
+      <div>}</div>
+      <div>console.log(greet(name));</div>
+      <div><span class="cm">// Hello, Ada!</span></div>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="section-head"><h2>Choose a track</h2><a class="btn btn-secondary" href="courses.html">All courses</a></div>
+    <div class="grid" id="paths"><p class="muted">Loading paths…</p></div>
+  </section>
+
+  <section class="shell section">
+    <h2>How a path works</h2>
+    <div class="how-grid">
+      <div class="how-card"><div class="num">1</div><h3>Read a short lesson</h3><p>One idea at a time, with examples you can copy.</p></div>
+      <div class="how-card"><div class="num">2</div><h3>Try it in the Lab</h3><p>Change the code, press Run, and see what happens.</p></div>
+      <div class="how-card"><div class="num">3</div><h3>Pass the checkpoint</h3><p>A short quiz at the end of each unit proves you understood it.</p></div>
+      <div class="how-card"><div class="num">4</div><h3>Earn XP</h3><p>Lessons, challenges and quizzes all add to your level.</p></div>
+    </div>
+  </section>
+
+  <section class="shell section">
+    <div class="lab-banner">
+      <div>
+        <h2>Code Lab</h2>
+        <p>An editor for HTML, CSS and JavaScript right in your browser. No install, no sign-in, no build step.</p>
+        <a class="btn btn-primary" href="lab.html">Open the Code Lab</a>
+      </div>
+      <div class="challenge-chips" id="challengeChips"></div>
+    </div>
+  </section>
+  <noscript><p class="shell">This page needs JavaScript to list the programming paths. Please turn it on and refresh.</p></noscript>
+</main>
+<script src="js/markdown.js"></script><script src="js/icons.js"></script><script src="js/data.js"></script><script src="js/app.js"></script>
+<script src="js/code.js"></script>
+</body></html>
